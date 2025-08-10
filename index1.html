@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html lang="ar" >
+<head>
+  <meta charset="UTF-8" />
+  <title>برمجاتي - أيمن البنا</title>
+  
+  <!-- أيقونات الشاشة الرئيسية والمتصفح -->
+  <link rel="icon" href="88.jpg" type="image/jpeg" />
+  <link rel="apple-touch-icon" href="88.jpg" />
+
+  <!-- ملف manifest -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- إعدادات PWA -->
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+
+  <!-- صورة عند مشاركة الرابط -->
+  <meta property="og:image" content="88.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- صورة عند المشاركة على تويتر -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="88.jpg" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    /* الوضع العادي (Light Mode) */
+    body {
+      direction: rtl;
+      font-family: Tahoma, sans-serif;
+      text-align: center;
+      background-color: rgb(190, 190, 190);
+      background-image: url('');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+      color: rgb(0, 0, 0);
+      padding: 40px;
+      margin: 0;
+      transition: background-color 0.4s, color 0.4s;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    img.profile-pic {
+      border-radius: 50%;
+      margin-top: 20px;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      transition: filter 0.4s;
+    }
+
+    ul.projects-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    table.projects-table {
+      margin: 0 auto;
+      border: 1px solid #000;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-collapse: collapse;
+      transition: background-color 0.4s, border-color 0.4s;
+    }
+
+    table.projects-table td {
+      padding: 10px;
+      border: 1px solid #000;
+      transition: border-color 0.4s;
+    }
+
+    table.projects-table a {
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    table.projects-table img {
+      width: 200px;
+      height: auto;
+      display: block;
+      margin-bottom: 5px;
+      filter: none;
+      transition: filter 0.4s;
+    }
+
+    a.contact-link {
+      color: rgb(51, 0, 133);
+      text-decoration: none;
+      margin: 0 5px;
+      transition: color 0.4s;
+    }
+
+    p.phone-number {
+      margin-top: -10px;
+      direction: ltr;
+      font-weight: bold;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 0.9em;
+      color: #555;
+      transition: color 0.4s;
+    }
+
+    /* زر التبديل */
+    #toggle-theme {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px 15px;
+      background-color: #3366cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+      z-index: 1000;
+    }
+    #toggle-theme:hover {
+      background-color: #254a99;
+    }
+
+    /* الوضع المظلم (Dark Mode) */
+    body.dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+
+    body.dark-mode table.projects-table {
+      background-color: rgba(255, 255, 255, 0.15);
+      border-color: #ccc;
+    }
+
+    body.dark-mode table.projects-table td {
+      border-color: #ccc;
+    }
+
+    body.dark-mode a.contact-link {
+      color: #9aaff9;
+    }
+
+    body.dark-mode footer {
+      color: #aaa;
+    }
+
+    body.dark-mode img.profile-pic,
+    body.dark-mode table.projects-table img {
+      filter: brightness(0.8);
+    }
+  </style>
+</head>
+<body>
+  <button id="toggle-theme">الوضع المظلم</button>
+
+  <h1>برمجاتي</h1>
+
+  <img src="10.jpg" alt="صورتي الشخصية" class="profile-pic" />
+
+  <h2>مطور واجهات أمامية</h2>
+
+  <p>أحب البرمجة، خاصة تصميم الواجهات وتجربة المستخدم. هذا الموقع هو بطاقة تعريفية بسيطة عني.</p>
+
+  <h3>مشاريعي:</h3>
+  <ul class="projects-list">
+    <!-- يمكن إضافة مشاريع هنا -->
+  </ul>
+
+  <table class="projects-table" align="center">
+    <tr>
+      <td>
+        <a href="https://aymenmajid2009.github.io/bbbb/" target="_blank">
+          <img src="111.jpg" alt="صورة توضيحية" />
+          محاضرات تنميه مهندس الموقع
+        </a>
+      </td>
+      <td>
+        <a href="https://aymenbarmg.github.io/AL.aniaq/" target="_blank">
+          <img src="3.jpg" alt="صورة توضيحية أخرى" />
+          فريق الانيق
+        </a>
+   
+      
+    
+    
+  </table>
+
+  <h3>تواصل معي:</h3>
+  <p>
+    <a href="mailto:aimanmajid034@gmail.com" class="contact-link">البريد الإلكتروني</a> |
+    <a href="https://t.me/Aot_121" target="_blank" class="contact-link">تيليجرام</a> |
+    <a href="https://instagram.com/o__q__9" target="_blank" class="contact-link">انستغرام</a>
+  </p>
+
+  <p class="phone-number">📞 رقم الهاتف: <span>+964-770-104-6271</span></p>
+
+  <footer>
+    <p>جميع الحقوق محفوظة © أيمن 2025</p>
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('toggle-theme');
+    const body = document.body;
+
+    // استعادة الوضع من التخزين المحلي إذا موجود
+    if(localStorage.getItem('theme') === 'dark'){
+      body.classList.add('dark-mode');
+      toggleBtn.textContent = 'الوضع العادي';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+
+      if(body.classList.contains('dark-mode')){
+        toggleBtn.textContent = 'الوضع العادي';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        toggleBtn.textContent = 'الوضع المظلم';
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>
+</body>
+</html>

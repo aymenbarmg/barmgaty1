@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>فريق الأنيق</title>
+  <link rel="icon" href="88.jpg" type="image/png">
+  <link rel="apple-touch-icon" href="88.jpg">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #222;
+      text-align: center;
+      padding: 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    h1 {
+      color: #5a2a83;
+    }
+
+    .logo {
+      width: 120px;
+      border-radius: 10px;
+    }
+
+    .images {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .images img {
+      width: 200px;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .players {
+      margin-top: 30px;
+    }
+
+    table {
+      margin: auto;
+      border-collapse: collapse;
+      width: 60%;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+    }
+
+    th {
+      background-color: #ddd;
+    }
+
+    .contact {
+      margin-top: 30px;
+      font-size: 18px;
+    }
+
+    .insta-links a {
+      display: block;
+      margin: 5px;
+      color: #833ab4;
+      text-decoration: none;
+    }
+
+    .form-container {
+      margin: 40px auto;
+      padding: 20px;
+      width: 300px;
+      background-color: #fff;
+      border: 2px solid #5a2a83;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .form-container input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .form-container button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #5a2a83;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .user-info {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .dark-mode {
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+
+    .dark-mode .form-container {
+      background-color: #1e1e1e;
+      border-color: #bbb;
+    }
+
+    .dark-mode table,
+    .dark-mode th,
+    .dark-mode td {
+      border-color: #555;
+      background-color: #1c1c1c;
+      color: #f0f0f0;
+    }
+
+    .dark-mode th {
+      background-color: #333;
+    }
+
+    .dark-mode a {
+      color: #9b59b6;
+    }
+
+    /* زر الإعدادات */
+    #settingsBtn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 15px;
+      background-color: #5a2a83;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      z-index: 1001;
+      font-size: 16px;
+    }
+
+    /* نافذة الإعدادات */
+    #settingsPopup {
+      display: none;
+      position: fixed;
+      top: 60px;
+      right: 20px;
+      width: 260px;
+      background-color: #fff;
+      border: 2px solid #5a2a83;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      padding: 15px;
+      z-index: 1000;
+      text-align: center;
+    }
+
+    .dark-mode #settingsPopup {
+      background-color: #1e1e1e;
+      border-color: #bbb;
+      color: #f0f0f0;
+    }
+
+    #settingsPopup button {
+      margin-top: 10px;
+      padding: 8px 15px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      background-color: #5a2a83;
+      color: white;
+      cursor: pointer;
+    }
+
+    #closeSettings {
+      background-color: #aaa;
+    }
+
+    .video-section {
+      margin-top: 10px;
+      display: none;
+    }
+
+    .video-section iframe {
+      width: 100%;
+      height: 150px;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- زر الإعدادات -->
+  <button id="settingsBtn">⚙️ الإعدادات</button>
+
+  <!-- نافذة الإعدادات -->
+  <div id="settingsPopup">
+    <h3>الإعدادات</h3>
+   <button id="toggleModeBtn">🌙 تفعيل الوضع المظلم</button>
+
+<p style="margin-top: 15px; font-weight: bold;">📥 كيف تثبيت التطبيق؟</p>
+
+<button id="iphoneBtn">📱 للايفون</button>
+<button id="androidBtn">🤖 للأندرويد</button>
+
+    <button id="closeSettings">إغلاق</button>
+
+    <div class="video-section" id="iphoneVideo" style="display: none;">
+  <h4>فيديو الايفون</h4>
+  <iframe width="100%" height="315" 
+    src="https://www.youtube.com/embed/ppffuiFzNM8" 
+    title="YouTube video player" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+  </iframe>
+</div>
+
+   <!-- فيديو الأندرويد -->
+<div class="video-section" id="androidVideo" style="display: none; margin-top: 10px;">
+  <h4>فيديو الأندرويد</h4>
+  <iframe width="100%" height="215"
+    src="https://www.youtube.com/embed/aaTsVYLTfcY"
+    frameborder="0" allowfullscreen></iframe>
+</div>
+
+  </div>
+
+  <h1>⚽ فريق الأنيق </h1>
+  <img src="88.jpg" alt="شعار الأنيق" class="logo">
+
+  <p>
+    يقود فريق الأنيق المدرب <strong>حيدر السراي</strong>، وقد تمكن من الوصول إلى <strong>أربع نهائيات</strong> في بطولات كروية محلية،
+    ولكن الحظ لم يحالفه في أي منها حتى الآن. الفريق يتميز بالروح القتالية، والمهارة الجماعية، ويطمح لتحقيق أول بطولة قريبًا.
+  </p>
+
+  <p>
+    رغم قلة الموارد، فإن الأنيق حصد احترام جماهير اللعبة بفضل الأداء الجميل الراقي والانضباط العالي داخل الملعب.
+  </p>
+
+  <p>
+    🎖️ <strong>يكافئ فريق الأنيق لاعب الشهر</strong> لأول مرة، وكانت الجائزة من نصيب النجم <strong>أحمد إحسان</strong>
+    الذي قدم كل ما لديه داخل المستطيل الأخضر، وقاتل بروح عالية في كل مباراة، ليحصل على هذا التكريم المستحق.
+  </p>
+
+  <div class="images">
+    <img src="1.jpg" alt="صورة 1">
+    <img src="2.jpg" alt="صورة 2">
+    <img src="3.jpg" alt="صورة 3">
+    <img src="4.jpg" alt="صورة 4">
+  </div>
+
+  <div class="players">
+    <h2>📋 أسماء اللاعبين وأرقامهم</h2>
+    <table>
+      <tr><th>الاسم</th><th>الرقم</th></tr>
+      <tr><td>احمد احسان</td><td>97</td></tr>
+      <tr><td>كرار</td><td>10</td></tr>
+      <tr><td>يوسف عبد الواحد</td><td>4</td></tr>
+      <tr><td>علي داود</td><td>3</td></tr>
+      <tr><td>امير كرار</td><td>7</td></tr>
+    </table>
+  </div>
+  <div class="insta-links">
+    <h3>📱 تابعونا على إنستغرام:</h3>
+    <a href="https://instagram.com/al.aniaq_sport_" target="_blank">🔗 @al.aniaq_sport_</a>
+    <a href="https://instagram.com/hhh.ri.18" target="_blank">🔗 @hhh.ri.18</a>
+  </div>
+
+  <div class="contact">
+    <h3>📞 للتواصل :</h3>
+    <p>رقم التواصل: <strong>+964 771 551 2965</strong></p>
+  </div>
+
+  <div class="form-container">
+    <h3>📝 أدخل اسمك ورقم هاتفك</h3>
+    <input type="text" id="username" placeholder="الاسم">
+    <input type="tel" id="phone" placeholder="رقم الهاتف">
+    <button onclick="submitForm()">إرسال</button>
+    <div class="user-info" id="userInfo"></div>
+  </div>
+
+  <script>
+    function submitForm() {
+      const name = document.getElementById('username').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const userInfo = document.getElementById('userInfo');
+
+      if (name === '' || phone === '') {
+        userInfo.innerHTML = '<p style="color:red;">يرجى إدخال الاسم ورقم الهاتف.</p>';
+      } else {
+        userInfo.innerHTML = `<p>شكراً لك يا <strong>${name}</strong>! سنتواصل معك على الرقم: <strong>${phone}</strong>.</p>`;
+      }
+    }
+
+    // ✅ زر الوضع المظلم
+    document.getElementById('toggleModeBtn').onclick = function () {
+      document.body.classList.toggle('dark-mode');
+      const btn = document.getElementById('toggleModeBtn');
+      btn.textContent = document.body.classList.contains('dark-mode')
+        ? '☀️ تفعيل الوضع العادي'
+        : '🌙 تفعيل الوضع المظلم';
+    };
+
+    // ✅ عرض نافذة الإعدادات
+    document.getElementById('settingsBtn').onclick = function () {
+      const popup = document.getElementById('settingsPopup');
+      popup.style.display = (popup.style.display === 'block') ? 'none' : 'block';
+    };
+
+    // ✅ إغلاق نافذة الإعدادات
+    document.getElementById('closeSettings').onclick = function () {
+      document.getElementById('settingsPopup').style.display = 'none';
+    };
+
+    // ✅ عرض فيديو الايفون
+    document.getElementById('iphoneBtn').onclick = function () {
+      document.getElementById('iphoneVideo').style.display = 'block';
+      document.getElementById('androidVideo').style.display = 'none';
+    };
+
+    // ✅ عرض فيديو الأندرويد
+    document.getElementById('androidBtn').onclick = function () {
+      document.getElementById('androidVideo').style.display = 'block';
+      document.getElementById('iphoneVideo').style.display = 'none';
+    };
+  </script>
+
+</body>
+</html>
+

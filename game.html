@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏎️ سباق السرعة</title>
+<style>
+  body {
+    background: #222;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+  }
+  canvas {
+    background: #444;
+    display: block;
+    border: 2px solid #fff;
+  }
+  .controls {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: 60px 60px 60px;
+    grid-template-rows: 60px 60px;
+    gap: 10px;
+  }
+  .btn {
+    background: #666;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.5em;
+    color: white;
+    touch-action: none;
+  }
+  .btn:active {
+    background: #0f0;
+  }
+</style>
+</head>
+<body>
+
+<canvas id="gameCanvas" width="400" height="600"></canvas>
+
+<!-- أزرار التحكم للموبايل -->
+<div class="controls">
+  <div></div>
+  <button id="up" class="btn">↑</button>
+  <div></div>
+  <button id="left" class="btn">←</button>
+  <div></div>
+  <button id="right" class="btn">→</button>
+  <div></div>
+  <button id="down" class="btn">↓</button>
+  <div></div>
+</div>
+
+<script>
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+
+// السيارة
+let car = { x: 180, y: 500, w: 40, h: 80, speed: 4 };
+
+// الأعداء
+let enemies = [];
+let enemySpeed = 3;
+let score = 0;
+
+// تحريك
+let up = false, down = false, left = false, right = false;
+
+// إنشاء عدو
+function spawnEnemy() {
+  let ex = Math.random() * (canvas.width - 40);
+  enemies.push({ x: ex, y: -80, w: 40, h: 80 });
+}
+
+// رسم السيارة
+function drawCar(c, color) {
+  ctx.fillStyle = color;
+  ctx.fillRect(c.x, c.y, c.w, c.h);
+}
+
+// تحديث اللعبة
+function update() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // تحريك اللاعب
+  if (up) car.y -= car.speed;
+  if (down) car.y += car.speed;
+  if (left) car.x -= car.speed;
+  if (right) car.x += car.speed;
+
+  // حدود الشاشة
+  if (car.x < 0) car.x = 0;
+  if (car.x + car.w > canvas.width) car.x = canvas.width - car.w;
+  if (car.y < 0) car.y = 0;
+  if (car.y + car.h > canvas.height) car.y = canvas.height - car.h;
+
+  // رسم اللاعب
+  drawCar(car, "lime");
+
+  // رسم الأعداء وتحريكهم
+  for (let i = enemies.length - 1; i >= 0; i--) {
+    let e = enemies[i];
+    e.y += enemySpeed;
+    drawCar(e, "red");
+
+    // إزالة إذا خرج من الشاشة
+    if (e.y > canvas.height) {
+      enemies.splice(i, 1);
+      score++;
+    }
+
+    // الاصطدام
+    if (
+      car.x < e.x + e.w &&
+      car.x + car.w > e.x &&
+      car.y < e.y + e.h &&
+      car.y + car.h > e.y
+    ) {
+      alert("💥 انتهت اللعبة! النتيجة: " + score);
+      document.location.reload();
+    }
+  }
+
+  // كتابة النقاط
+  ctx.fillStyle = "white";
+  ctx.font = "20px Arial";
+  ctx.fillText("النقاط: " + score, 10, 20);
+
+  requestAnimationFrame(update);
+}
+
+// أزرار لوحة المفاتيح
+document.addEventListener("keydown", e => {
+  if (e.key === "ArrowUp") up = true;
+  if (e.key === "ArrowDown") down = true;
+  if (e.key === "ArrowLeft") left = true;
+  if (e.key === "ArrowRight") right = true;
+});
+document.addEventListener("keyup", e => {
+  if (e.key === "ArrowUp") up = false;
+  if (e.key === "ArrowDown") down = false;
+  if (e.key === "ArrowLeft") left = false;
+  if (e.key === "ArrowRight") right = false;
+});
+
+// أزرار اللمس
+function bindBtn(id, start, end) {
+  let btn = document.getElementById(id);
+  btn.addEventListener("touchstart", e => { e.preventDefault(); start(); });
+  btn.addEventListener("touchend", e => { e.preventDefault(); end(); });
+  btn.addEventListener("mousedown", e => { e.preventDefault(); start(); });
+  btn.addEventListener("mouseup", e => { e.preventDefault(); end(); });
+}
+
+bindBtn("up", () => up = true, () => up = false);
+bindBtn("down", () => down = true, () => down = false);
+bindBtn("left", () => left = true, () => left = false);
+bindBtn("right", () => right = true, () => right = false);
+
+// بدء اللعبة
+setInterval(spawnEnemy, 1000);
+update();
+</script>
+
+</body>
+</html>
