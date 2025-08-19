@@ -51,32 +51,40 @@
       transition: filter 0.4s;
     }
 
-    table.projects-table {
-      width: 100%;
+    /* شبكة المشاريع بدل الجدول */
+    .projects-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
       max-width: 600px;
       margin: 20px auto;
-      border: 1px solid #000;
-      background-color: rgba(0, 0, 0, 0.6);
-      border-collapse: collapse;
     }
 
-    table.projects-table td {
+    .project-card {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
       padding: 10px;
-      border: 1px solid #000;
+      transition: transform 0.3s, background 0.3s;
     }
 
-    table.projects-table a {
+    .project-card:hover {
+      transform: scale(1.05);
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .project-card a {
       color: #fff;
       text-decoration: none;
       display: block;
     }
 
-    table.projects-table img {
+    .project-card img {
       width: 100%;
       height: auto;
       max-width: 200px;
-      margin: 0 auto 5px;
+      margin: 0 auto 8px;
       display: block;
+      border-radius: 8px;
     }
 
     a.contact-link {
@@ -117,12 +125,8 @@
       background-color: #121212;
       color: #e0e0e0;
     }
-    body.dark-mode table.projects-table {
-      background-color: rgba(255, 255, 255, 0.15);
-      border-color: #ccc;
-    }
-    body.dark-mode table.projects-table td {
-      border-color: #ccc;
+    body.dark-mode .project-card {
+      background: rgba(255, 255, 255, 0.15);
     }
     body.dark-mode a.contact-link {
       color: #9aaff9;
@@ -131,19 +135,12 @@
       color: #aaa;
     }
     body.dark-mode img.profile-pic,
-    body.dark-mode table.projects-table img {
+    body.dark-mode .project-card img {
       filter: brightness(0.8);
     }
 
     /* تحسينات للهواتف */
     @media (max-width: 600px) {
-      table.projects-table td {
-        display: block;
-        width: 100%;
-      }
-      table.projects-table {
-        border: none;
-      }
       #toggle-theme {
         font-size: 0.8em;
         padding: 6px 10px;
@@ -163,22 +160,20 @@
   <p>أحب البرمجة، خاصة تصميم الواجهات وتجربة المستخدم. هذا الموقع هو بطاقة تعريفية بسيطة عني.</p>
 
   <h3>مشاريعي:</h3>
-  <table class="projects-table">
-    <tr>
-      <td>
-        <a href="https://aymenmajid2009.github.io/bbbb/" target="_blank">
-          <img src="111.jpg" alt="صورة توضيحية" />
-          محاضرات تنميه مهندس الموقع
-        </a>
-      </td>
-      <td>
-        <a href="https://aymenbarmg.github.io/AL.aniaq/" target="_blank">
-          <img src="3.jpg" alt="صورة توضيحية أخرى" />
-          فريق الانيق
-        </a>
-      </td>
-    </tr>
-  </table>
+  <div class="projects-container">
+    <div class="project-card">
+      <a href="https://aymenmajid2009.github.io/bbbb/" target="_blank">
+        <img src="111.jpg" alt="صورة توضيحية" />
+        محاضرات تنميه مهندس الموقع
+      </a>
+    </div>
+    <div class="project-card">
+      <a href="https://aymenbarmg.github.io/AL.aniaq/" target="_blank">
+        <img src="3.jpg" alt="صورة توضيحية أخرى" />
+        فريق الانيق
+      </a>
+    </div>
+  </div>
 
   <h3>تواصل معي:</h3>
   <p>
