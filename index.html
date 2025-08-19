@@ -29,20 +29,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
-    /* الوضع العادي */
     body {
       direction: rtl;
       font-family: Tahoma, sans-serif;
       text-align: center;
       background-color: rgb(190, 190, 190);
-      background-image: url('');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-position: center;
-      color: #000;
-      padding: 40px;
       margin: 0;
+      padding: 20px;
       transition: background-color 0.4s, color 0.4s;
     }
 
@@ -50,84 +43,73 @@
 
     img.profile-pic {
       border-radius: 50%;
-      margin-top: 20px;
-      width: 200px;
-      height: 200px;
+      margin: 20px auto;
+      width: 150px;
+      height: 150px;
+      max-width: 100%;
       object-fit: cover;
       transition: filter 0.4s;
     }
 
-    ul.projects-list {
-      list-style-type: none;
-      padding: 0;
-    }
-
     table.projects-table {
-      margin: 0 auto;
+      width: 100%;
+      max-width: 600px;
+      margin: 20px auto;
       border: 1px solid #000;
       background-color: rgba(0, 0, 0, 0.6);
       border-collapse: collapse;
-      transition: background-color 0.4s, border-color 0.4s;
     }
 
     table.projects-table td {
       padding: 10px;
       border: 1px solid #000;
-      transition: border-color 0.4s;
     }
 
     table.projects-table a {
       color: #fff;
       text-decoration: none;
-      display: inline-block;
+      display: block;
     }
 
     table.projects-table img {
-      width: 200px;
+      width: 100%;
       height: auto;
+      max-width: 200px;
+      margin: 0 auto 5px;
       display: block;
-      margin-bottom: 5px;
-      filter: none;
-      transition: filter 0.4s;
     }
 
     a.contact-link {
       color: rgb(51, 0, 133);
       text-decoration: none;
       margin: 0 5px;
-      transition: color 0.4s;
     }
 
     p.phone-number {
       margin-top: -10px;
       direction: ltr;
       font-weight: bold;
+      font-size: 0.9em;
     }
 
     footer {
-      margin-top: 50px;
-      font-size: 0.9em;
+      margin-top: 40px;
+      font-size: 0.8em;
       color: #555;
-      transition: color 0.4s;
     }
 
-    /* زر التبديل */
     #toggle-theme {
       position: fixed;
-      top: 20px;
-      left: 20px;
-      padding: 10px 15px;
+      top: 10px;
+      left: 10px;
+      padding: 8px 12px;
       background-color: #3366cc;
       color: #fff;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-weight: bold;
-      transition: background-color 0.3s;
+      font-size: 0.9em;
       z-index: 1000;
-    }
-    #toggle-theme:hover {
-      background-color: #254a99;
     }
 
     /* الوضع المظلم */
@@ -135,44 +117,52 @@
       background-color: #121212;
       color: #e0e0e0;
     }
-
     body.dark-mode table.projects-table {
       background-color: rgba(255, 255, 255, 0.15);
       border-color: #ccc;
     }
-
     body.dark-mode table.projects-table td {
       border-color: #ccc;
     }
-
     body.dark-mode a.contact-link {
       color: #9aaff9;
     }
-
     body.dark-mode footer {
       color: #aaa;
     }
-
     body.dark-mode img.profile-pic,
     body.dark-mode table.projects-table img {
       filter: brightness(0.8);
     }
+
+    /* تحسينات للهواتف */
+    @media (max-width: 600px) {
+      table.projects-table td {
+        display: block;
+        width: 100%;
+      }
+      table.projects-table {
+        border: none;
+      }
+      #toggle-theme {
+        font-size: 0.8em;
+        padding: 6px 10px;
+      }
+      h1 { font-size: 1.4em; }
+      h2 { font-size: 1.2em; }
+      h3 { font-size: 1em; }
+    }
   </style>
 </head>
 <body>
-  <!-- زر التبديل -->
   <button id="toggle-theme">الوضع المظلم</button>
 
-  <!-- العنوان -->
   <h1>برمجاتي</h1>
   <img src="10.jpg" alt="صورتي الشخصية" class="profile-pic" />
   <h2>مطور واجهات أمامية</h2>
   <p>أحب البرمجة، خاصة تصميم الواجهات وتجربة المستخدم. هذا الموقع هو بطاقة تعريفية بسيطة عني.</p>
 
-  <!-- المشاريع -->
   <h3>مشاريعي:</h3>
-  <ul class="projects-list"></ul>
-
   <table class="projects-table">
     <tr>
       <td>
@@ -190,7 +180,6 @@
     </tr>
   </table>
 
-  <!-- التواصل -->
   <h3>تواصل معي:</h3>
   <p>
     <a href="mailto:aimanmajid034@gmail.com" class="contact-link">البريد الإلكتروني</a> |
@@ -200,7 +189,6 @@
 
   <p class="phone-number">📞 رقم الهاتف: <span>+964-770-104-6271</span></p>
 
-  <!-- الفوتر -->
   <footer>
     <p>جميع الحقوق محفوظة © أيمن 2025</p>
   </footer>
@@ -209,7 +197,6 @@
     const toggleBtn = document.getElementById('toggle-theme');
     const body = document.body;
 
-    // استعادة الوضع من التخزين المحلي
     if (localStorage.getItem('theme') === 'dark') {
       body.classList.add('dark-mode');
       toggleBtn.textContent = 'الوضع العادي';
