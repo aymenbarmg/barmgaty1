@@ -1,13 +1,12 @@
-
 <!DOCTYPE html>
-<html lang="ar" >
+<html lang="ar">
 <head>
   <meta charset="UTF-8" />
   <title>برمجاتي - أيمن البنا</title>
   
   <!-- أيقونات الشاشة الرئيسية والمتصفح -->
-  <link rel="icon" href="88.jpg" type="image/jpeg" />
-  <link rel="apple-touch-icon" href="88.jpg" />
+  <link rel="icon" href="00.jpg" type="image/jpeg" />
+  <link rel="apple-touch-icon" href="00.jpg" />
 
   <!-- ملف manifest -->
   <link rel="manifest" href="manifest.json" />
@@ -18,19 +17,19 @@
   <meta name="mobile-web-app-capable" content="yes" />
 
   <!-- صورة عند مشاركة الرابط -->
-  <meta property="og:image" content="88.jpg" />
+  <meta property="og:image" content="00.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
   <!-- صورة عند المشاركة على تويتر -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:image" content="88.jpg" />
+  <meta name="twitter:image" content="00.jpg" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
-    /* الوضع العادي (Light Mode) */
+    /* الوضع العادي */
     body {
       direction: rtl;
       font-family: Tahoma, sans-serif;
@@ -41,15 +40,13 @@
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-position: center;
-      color: rgb(0, 0, 0);
+      color: #000;
       padding: 40px;
       margin: 0;
       transition: background-color 0.4s, color 0.4s;
     }
 
-    h1 {
-      margin-bottom: 10px;
-    }
+    h1 { margin-bottom: 10px; }
 
     img.profile-pic {
       border-radius: 50%;
@@ -80,7 +77,7 @@
     }
 
     table.projects-table a {
-      color: white;
+      color: #fff;
       text-decoration: none;
       display: inline-block;
     }
@@ -121,7 +118,7 @@
       left: 20px;
       padding: 10px 15px;
       background-color: #3366cc;
-      color: white;
+      color: #fff;
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -133,7 +130,7 @@
       background-color: #254a99;
     }
 
-    /* الوضع المظلم (Dark Mode) */
+    /* الوضع المظلم */
     body.dark-mode {
       background-color: #121212;
       color: #e0e0e0;
@@ -163,22 +160,20 @@
   </style>
 </head>
 <body>
+  <!-- زر التبديل -->
   <button id="toggle-theme">الوضع المظلم</button>
 
+  <!-- العنوان -->
   <h1>برمجاتي</h1>
-
   <img src="10.jpg" alt="صورتي الشخصية" class="profile-pic" />
-
   <h2>مطور واجهات أمامية</h2>
-
   <p>أحب البرمجة، خاصة تصميم الواجهات وتجربة المستخدم. هذا الموقع هو بطاقة تعريفية بسيطة عني.</p>
 
+  <!-- المشاريع -->
   <h3>مشاريعي:</h3>
-  <ul class="projects-list">
-    <!-- يمكن إضافة مشاريع هنا -->
-  </ul>
+  <ul class="projects-list"></ul>
 
-  <table class="projects-table" align="center">
+  <table class="projects-table">
     <tr>
       <td>
         <a href="https://aymenmajid2009.github.io/bbbb/" target="_blank">
@@ -191,12 +186,11 @@
           <img src="3.jpg" alt="صورة توضيحية أخرى" />
           فريق الانيق
         </a>
-   
-      
-    
-    
+      </td>
+    </tr>
   </table>
 
+  <!-- التواصل -->
   <h3>تواصل معي:</h3>
   <p>
     <a href="mailto:aimanmajid034@gmail.com" class="contact-link">البريد الإلكتروني</a> |
@@ -206,6 +200,7 @@
 
   <p class="phone-number">📞 رقم الهاتف: <span>+964-770-104-6271</span></p>
 
+  <!-- الفوتر -->
   <footer>
     <p>جميع الحقوق محفوظة © أيمن 2025</p>
   </footer>
@@ -214,16 +209,15 @@
     const toggleBtn = document.getElementById('toggle-theme');
     const body = document.body;
 
-    // استعادة الوضع من التخزين المحلي إذا موجود
-    if(localStorage.getItem('theme') === 'dark'){
+    // استعادة الوضع من التخزين المحلي
+    if (localStorage.getItem('theme') === 'dark') {
       body.classList.add('dark-mode');
       toggleBtn.textContent = 'الوضع العادي';
     }
 
     toggleBtn.addEventListener('click', () => {
       body.classList.toggle('dark-mode');
-
-      if(body.classList.contains('dark-mode')){
+      if (body.classList.contains('dark-mode')) {
         toggleBtn.textContent = 'الوضع العادي';
         localStorage.setItem('theme', 'dark');
       } else {
